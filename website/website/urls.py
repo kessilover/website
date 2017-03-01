@@ -16,9 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
-from stories.models import Story
 
-admin.site.register(Story)
 urlpatterns = (
     url(r'^admin/', include(admin.site.urls)),
     url(r'^stories/', include('stories.urls') ),

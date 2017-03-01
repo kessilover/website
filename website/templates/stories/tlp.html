@@ -1,37 +1,88 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<link rel="stylesheet" href="/media/css/style.css" />
-<title>Mon blog sur les crêpes bretonnes</title>
+<link rel="stylesheet" href="/static/css/agency.css" />
+<title>Kessilover</title>
     <style>
-        h1{
-        color : #fce300;
-        border : solid red 1px;
-        }
+    .image{
+    position : relative;}
+.image img {
+height 350px;
+width : 540px;
+margin-left : 100px;
+
+}
+.image h2:nth-child(1)
+{
+position:absolute; top:100px; left:480px;
+color : white;
+text-align : center;
+word-wrap : break-word;
+}
+
+.image h2:nth-child(2)
+{
+position:absolute; top:120px; left:530px;
+color : white;
+text-align : center;
+word-wrap : break-word;
+}
+
         .story{
-        width : 300px;
-        border : dotted black 2px;
+        width : 260px;
+        padding : 50px;
+        border : solid black 2px;
         font-size : 16px;
         margin : 20px;
+        display : inline-block;
+        }
+        img:nth-child(1)
+        {
+        width: 100px;
 
         }
+        .story h3{
+        color : #D46A6A;
+
+        }
+        .story p {
+        text-align : center;
+        text-transform : capitalize;
+        border : dotted black 0.5px;
+        word-wrap : break-word;
+        }
+
+
 
 
     </style>
 </head>
 <body>
-<h1> Well people it's my fisrt image</h1>
+<center>
+<div class="image">
+    <h2> This is where I'll be displaying the </h2> <h2> fanfictions I have written.</h2>
 
+    <img src="/static/img/22.png">
+
+</div>
+    </center>
+
+{% for story in last_stories %}
 <div class="story">
-    <h3>{{last_stories.title}}</h3>
-    <p><b>the summary :</b> {{last_stories.summary}}</p>
+        {% load static %}
+<center>
+    <img src="{% static story.cover.url %}">
+
+    </center>
+    <h3>{{story.title}}</h3>
+    <p><b>The summary :</b> {{story.summary|truncatewords:20}}</p>
 
 </div>
-
-<p> She hasn't written anything yet.</p>
-
+{% endfor %}
 
 
-</div>
+
+
+
 </body>
 </html>
